@@ -61,6 +61,9 @@ if (!isset($_SESSION['auth'])) {
                       <li class="nav-item">
                             <a class="nav-link" href="/reports">Reports</a>
                         </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/movie">Movie</a>
+                      </li>
                   </ul>
                   <ul class="navbar-nav ms-auto">
                       <li class="nav-item">

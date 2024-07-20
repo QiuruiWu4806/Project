@@ -45,8 +45,11 @@
                             <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
+                              <a class="nav-link" href="/login">Login</a>
+                          </li>
+                        <li class="nav-item">
+                              <a class="nav-link" href="/movie">Movie</a>
+                          </li>
                     </ul>
                 </div>
             </div>

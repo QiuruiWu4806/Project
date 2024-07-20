@@ -19,3 +19,4 @@ define('DB_USER',         'Assignment2DB_identityas');
 define('DB_PASS',         $_ENV['DB_PASS']);
 define('DB_DATABASE',     'Assignment2DB_identityas');
 define('DB_PORT',         '3305');
+define('OMDB_API', $_ENV['OMDB_KEY']);
