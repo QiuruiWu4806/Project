@@ -12,7 +12,7 @@ class Api{
     }
 
     public function getAIReview($title) {
-        $url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key='.AIKey;
+        $url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key='.AIkey;
 
         $data = array(
             'contents' => array(
