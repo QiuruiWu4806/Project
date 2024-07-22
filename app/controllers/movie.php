@@ -29,14 +29,11 @@ class Movie extends Controller {
     }
 
     public function getReview() {
-        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
-        if (!$title) {
-            echo json_encode(['review' => 'Invalid movie title']);
-            return;
-        }
+        $result = $_SESSION['movie'];
+        $title = $result['Title'];
 
-        $review = getAIReview($title);
-        echo json_encode(['review' => $review]);
+        $_SESSION['review'] = $this->model('Api')->getAIReview($title);
+        $this->view('movie/review');
     }
 }
 ?>

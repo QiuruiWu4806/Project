@@ -48,10 +48,10 @@ $result = $_SESSION['movie'];
                     ?>
 
                     <!-- Get AI Review Button -->
-                    <form action="" method="post" >
-                    <button id="getReview" class="btn btn-info mt-3">Get a Review</button>
-                    <p id="review" class="mt-3"></p>
-    <form>
+            <form method="post" action="getReview">
+        <input type="hidden" name="title" value=$result['Title']);>
+        <button type="submit" class="btn btn-info mt-3">Get a Review</button>
+    </form>
 
                     <!-- Display existing ratings -->
                     <?php if (!empty($ratings)): ?>
