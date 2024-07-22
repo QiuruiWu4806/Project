@@ -10,5 +10,4 @@ class Api{
         $response = file_get_contents($url);
         return (array)json_decode($response);
     }
-
 }

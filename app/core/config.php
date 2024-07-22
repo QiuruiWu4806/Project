@@ -20,3 +20,4 @@ define('DB_PASS',         $_ENV['DB_PASS']);
 define('DB_DATABASE',     'Assignment2DB_identityas');
 define('DB_PORT',         '3305');
 define('ApiKey' ,         $_ENV['OMDB_KEY']);
+define('AIkey',           $_ENV['AI_KEY']);

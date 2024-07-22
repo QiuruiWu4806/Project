@@ -3,6 +3,7 @@
 $result = $_SESSION['movie'];
 ?>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -23,6 +24,47 @@ $result = $_SESSION['movie'];
                     <p class="card-text"><strong>Genre:</strong> <?php echo $result['Genre']; ?></p>
                     <p class="card-text"><strong>Plot:</strong> <?php echo $result['Plot']; ?></p>
                     <p class="card-text"><strong>Poster:</strong> <img src="<?php echo $result['Poster']; ?>" alt="Movie Poster" class="img-fluid"></p>
+
+                    <!-- Rating -->
+                    <form method="post" action="rateMovie">
+                        <div class="form-group">
+                            <label for="rating">Rate this movie:</label>
+                            <div class="btn-group" role="group" aria-label="Rating">
+                                <button type="submit" class="btn btn-outline-primary" name="rating" value="1">1 ★</button>
+                                <button type="submit" class="btn btn-outline-primary" name="rating" value="2">2 ★</button>
+                                <button type="submit" class="btn btn-outline-primary" name="rating" value="3">3 ★</button>
+                                <button type="submit" class="btn btn-outline-primary" name="rating" value="4">4 ★</button>
+                                <button type="submit" class="btn btn-outline-primary" name="rating" value="5">5 ★</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Display existing rating -->
+                    <?php 
+                    $db = db_connect();
+                    $stmt = $db->prepare("SELECT rating FROM ratings WHERE title = :title");
+                    $stmt->bindParam(':title', $result['Title']);
+                    $stmt->execute();
+                    $ratings = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+                    ?>
+
+                    <!-- Get AI Review Button -->
+                    <form action="" method="post" >
+                    <button id="getReview" class="btn btn-info mt-3">Get a Review</button>
+                    <p id="review" class="mt-3"></p>
+    <form>
+
+                    <!-- Display existing ratings -->
+                    <?php if (!empty($ratings)): ?>
+                        <p><strong>Ratings:</strong></p>
+                        <ul>
+                            <?php foreach ($ratings as $rating): ?>
+                                <li><?php echo htmlspecialchars($rating['rating']); ?> ★</li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <p>No ratings yet for this movie.</p>
+                    <?php endif; ?>
+
                 </div>
             </div>
         <?php else: ?>
