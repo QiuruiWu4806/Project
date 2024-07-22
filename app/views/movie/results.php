@@ -41,10 +41,10 @@ $result = $_SESSION['movie'];
                     <!-- Display existing rating -->
                     <?php 
                     $db = db_connect();
-                    $stmt = $db->prepare("SELECT rating FROM ratings WHERE title = :title");
-                    $stmt->bindParam(':title', $result['Title']);
-                    $stmt->execute();
-                    $ratings = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+                    $statement = $db->prepare("SELECT rating FROM ratings WHERE title = :title");
+                    $statement->bindParam(':title', $result['Title']);
+                    $statement->execute();
+                    $ratings = $statement->fetchAll(PDO::FETCH_ASSOC); 
                     ?>
 
                     <!-- Get AI Review Button -->
@@ -53,9 +53,9 @@ $result = $_SESSION['movie'];
         <button type="submit" class="btn btn-info mt-3">Get a Review</button>
     </form>
 
-                    <!-- Display existing ratings -->
+                    <!-- Display ratings -->
                     <?php if (!empty($ratings)): ?>
-                        <p><strong>Ratings:</strong></p>
+                        <p><strong>Ratings from Users:</strong></p>
                         <ul>
                             <?php foreach ($ratings as $rating): ?>
                                 <li><?php echo htmlspecialchars($rating['rating']); ?> ★</li>
